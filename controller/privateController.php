@@ -21,12 +21,22 @@ if(isset($_GET['update'])&&ctype_digit($_GET['update'])){
         $ourdesc = htmlspecialchars(trim($_POST['ourdesc']),ENT_QUOTES);
         $latitude = (float) $_POST['latitude'];
         $longitude = (float) $_POST['longitude'];
+<<<<<<< HEAD
         $update = updateOurdatasByID($connect, $idourdatas, $title, $ourdesc, $latitude, $longitude);
+=======
+        $update = updateOurdatasByID($connect,$idourdatas,$title,$ourdesc,$latitude,$longitude);
+        if($update===true){
+            // redirection
+            header("Location: ./");
+            die;
+        }
+        //var_dump($update);
+>>>>>>> d124f8efa7a9bf6924ef069db4e3190ebee4e6e6
     }
     
     // Appel de la fonction qui charge une donnée par son id
     $update = getOneOurdatasByID($connect,$id);
-    var_dump($update,$_POST);
+    //var_dump($update,$_POST);
     // appel de la vue d'update
     require "../view/private/admin.update.html.php";
 }

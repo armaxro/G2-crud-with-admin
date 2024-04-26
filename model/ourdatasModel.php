@@ -36,6 +36,19 @@ function getOneOurdatasByID(PDO $connexion, int $id): array|string
 
 }
 
+// suppression d'une data via son ID
+function deleteOurdatasByID(PDO $db, int $idPomme) : bool|string
+{
+    $sql = "DELETE FROM ourdatas WHERE `idourdatas` = ?";
+    $prepare = $db->prepare($sql);
+    try {
+        $prepare->execute([$idPomme]);
+        return true;
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }           
+}
+
 // Modification d'une data via son ID
 function updateOurdatasByID(
                             PDO $db,
@@ -47,7 +60,22 @@ function updateOurdatasByID(
                             ) 
         : bool|string
 {
-    return false;
+    $sql = "UPDATE `ourdatas` SET `title` = :titre, `ourdesc` = :d, `latitude` = :poire, `longitude` = :pomme WHERE `idourdatas` = :id";
+    $prepare = $db->prepare($sql);
+    try{
+        $prepare->bindValue(":id", $idourdatas, PDO::PARAM_INT);
+        $prepare->bindValue(":titre", $titre);
+        $prepare->bindValue(":d", $description);
+        $prepare->bindValue(":poire", $latitude);
+        $prepare->bindValue(":pomme", $longitude);
+        // return true si réussi, sinon on va dans le catch
+        // return $prepare->execute();
+        $prepare->execute();
+        return true;
+    }catch(Exception $e){
+        return $e->getMessage();
+    }
+    
 }
 
 
