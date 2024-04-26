@@ -20,8 +20,8 @@ if(isset($_GET['update'])&&ctype_digit($_GET['update'])){
         $title = htmlspecialchars(strip_tags(trim($_POST['title'])),ENT_QUOTES);
         $ourdesc = htmlspecialchars(trim($_POST['ourdesc']),ENT_QUOTES);
         $latitude = (float) $_POST['latitude'];
-        $logintude = (float) $_POST['longitude'];
-
+        $longitude = (float) $_POST['longitude'];
+        $update = updateOurdatasByID($connect, $idourdatas, $title, $ourdesc, $latitude, $longitude);
     }
     
     // Appel de la fonction qui charge une donnée par son id
