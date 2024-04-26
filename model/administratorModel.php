@@ -24,8 +24,7 @@ function administratorConnect(PDO $connectDB, string $login, string $password): 
         if(password_verify($password, $result['passwd'])){
 
             // création de la session valide
-            $_SESSION['myID'] = session_id();
-            $_SESSION['idadministrator '] = $result['idadministrator'];
+            $_SESSION['idadministrator'] = $result['idadministrator'];
             $_SESSION['login'] = $login;
             return true;
         }else{

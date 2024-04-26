@@ -8,6 +8,7 @@ require_once '../config.php';
 require_once "../model/administratorModel.php";
 require_once "../model/ourdatasModel.php";
 
+
 // Connexion
 try{
     $connect = new PDO(
@@ -20,8 +21,8 @@ try{
     die($e->getMessage());
 }
 
-// si on est connecté
-if(isset($_SESSION['myID']) && $_SESSION['myID'] == session_id()){
+// si on est connecté (existance d'une variable de session attendue)
+if(isset($_SESSION['login'])){
     // chargement du contrôleur privé
     require_once "../controller/privateController.php";
     

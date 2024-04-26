@@ -16,6 +16,9 @@
     </nav>
     <div class="content">
         <h2>Insertion d'une data</h2>
+        <?php if(isset($error)): ?>
+                <h3 class="error"><?=$error?></h3>
+        <?php endif ?>
        <form action="" name="ourdatas" method="POST">
         <input type="text" name="title" placeholder="title" required><br>
         <textarea name="ourdesc" placeholder="Descrition" required></textarea><br>

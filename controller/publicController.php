@@ -23,6 +23,13 @@ if(isset($_GET['connect'])){
     exit();
 }
 
+// si on veut récupérer les données en json (pour JS, Leaflet, OpenStreetMap)
+if(isset($_GET['json'])){
+    $ourDatas = getAllOurdatas($connect,"ASC");
+    echo json_encode($ourDatas);
+    exit();
+}
+
 // on charge toutes les données
 $ourDatas = getAllOurdatas($connect);
 // pas encore de données
