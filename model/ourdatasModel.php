@@ -17,24 +17,6 @@ function getAllOurdatas(PDO $db, $order = "DESC"): array|string
     }
 }
 
-<<<<<<< HEAD
-// Function to add a new data
-function addOurdata(PDO $db, string $title, string $content): bool|string
-{
-    $sql = "INSERT INTO ourdatas (title, content) VALUES (:title, :content);";
-    try {
-        $query = $db->prepare($sql);
-        $query->bindParam(':title', $title);
-        $query->bindParam(':content', $content);
-        $query->execute();
-        $query->closeCursor();
-        return true;
-    } catch (Exception $e) {
-        return ['error' => $e->getMessage()];
-    }
-}
-
-=======
 // récupération d'une data via son ID
 function getOneOurdatasByID(PDO $connexion, int $id): array|string
 {
@@ -69,7 +51,6 @@ function updateOurdatasByID(
 }
 
 
->>>>>>> 667ddea33468f2fd5bfda684979bc0bdf1fa13e3
 // ajoutez avec une requête préparée la nouvelle data
 function addOurdatas(PDO $db, 
                     string $titre, 
